@@ -7,7 +7,7 @@ import io
 
 
 import numpy as np
-import cv2
+
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
