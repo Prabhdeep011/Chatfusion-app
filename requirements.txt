@@ -158,6 +158,25 @@ yarl==1.11.1
 
 
 
+dotenv
+streamlit
+Pillow  # Use 'Pillow' instead of 'PIL'
+google-generativeai
+io
+reportlab
+numpy
+opencv-python  # Use 'opencv-python' for OpenCV
+textwrap
+streamlit-webrtc
+pydub
+speechrecognition  # Use 'speechrecognition' instead of 'speech_recognition'
+requests
+pypdf
+pickle5  # For compatibility with Python 3.8+
+base64
+
+
+
 
 
 
