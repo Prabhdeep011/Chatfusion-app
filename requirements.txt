@@ -156,22 +156,18 @@ urllib3==2.2.3
 wrapt==1.16.0
 yarl==1.11.1
 
-streamlit==1.38.0  # Your current Streamlit version
-opencv-python       # For OpenCV functionality
-pydub               # For audio file processing
-speech_recognition  # For speech recognition
-numpy               # For numerical operations
-requests            # For making HTTP requests
-pypdf               # For PDF file handling
-dotenv              # For environment variable management
-google-generativeai # For Google AI functionality
-reportlab           # For PDF generation
-Pillow              # (PIL) For image handling
-streamlit-webrtc    # For real-time webRTC functionality
-io                  # (part of the standard library, no need to include)
-textwrap            # (part of the standard library, no need to include)
-pickle              # (part of the standard library, no need to include)
-base64              # (part of the standard library, no need to include)
+streamlit==1.38.0
+opencv-python==4.6.0.66  # Compatible version for Python 3.12
+pydub
+numpy
+requests
+pypdf
+python-dotenv
+google-generativeai
+reportlab
+Pillow
+streamlit-webrtc
+SpeechRecognition  # Ensure this is the correct case and spelling
 
 
 
