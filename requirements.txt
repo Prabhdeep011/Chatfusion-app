@@ -175,6 +175,9 @@ streamlit-webrtc==0.35.0
 reportlab==3.6.11
 
 
+--upgrade pip
+
+
 
 
 
