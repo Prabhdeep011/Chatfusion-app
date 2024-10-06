@@ -157,7 +157,8 @@ wrapt==1.16.0
 yarl==1.11.1
 
 
-
+numpy==1.21.0
+opencv-python==4.5.3
 dotenv
 streamlit
 Pillow  # Use 'Pillow' instead of 'PIL'
