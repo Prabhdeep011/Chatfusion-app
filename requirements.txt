@@ -171,7 +171,7 @@ SpeechRecognition  # Ensure this is the correct case and spelling
 streamlit==1.38.0
 opencv-python==4.8.0.74  # Change this based on your Python version
 
-streamlit-webrtc==0.35.0
+
 reportlab==3.6.11
 
 
