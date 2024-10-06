@@ -1,15 +1,13 @@
 python-dotenv
 streamlit
-pillow  # Image processing
-google-generativeai  # Make sure it's compatible with your Python version
-reportlab  # For PDF generation
-numpy  # Numerical computing
+pillow
+google-generativeai
+reportlab
+numpy
 opencv-python  # Use 'opencv-python' instead of 'cv2'
-streamlit-webrtc  # WebRTC support for Streamlit
-pydub  # Audio manipulation
-SpeechRecognition  # For speech recognition
-requests  # For making HTTP requests
-PyPDF2  # Use 'PyPDF2' instead of 'pypdf' for PDF handling
-pickle  # Standard library, do not include in requirements
-base64  # Standard library, do not include in requirements
-pandas  # Data manipulation and analysis
+streamlit-webrtc
+pydub
+SpeechRecognition  # Correct casing
+requests
+PyPDF2  # Correct package name
+pandas
