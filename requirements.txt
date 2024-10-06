@@ -161,7 +161,7 @@ Pillow
 google-generativeai
 reportlab
 numpy
-opencv-python
+
 textwrap
 streamlit-webrtc
 pydub
