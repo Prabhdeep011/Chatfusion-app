@@ -170,7 +170,7 @@ os
 io
 	reportlab
 	numpy
-	cv2
+	opencv
 textwrap
 	streamlit_webrtc
 	pydub
