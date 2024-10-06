@@ -1,14 +1,13 @@
 python-dotenv
 streamlit
 pillow
-google.generativeai
+google-generativeai
 reportlab
 numpy
-textwrap
-streamlit_webrtc
+opencv2-python  # Use 'opencv-python' instead of 'cv2'
+streamlit-webrtc
 pydub
-speech_recognition
+SpeechRecognition  # Correct casing
 requests
-pypdf
+PyPDF2  # Correct package name
 pandas
-opencv-python-headless
