@@ -4,8 +4,7 @@ import os
 from PIL import Image
 
 import io
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+
 from streamlit_webrtc import webrtc_streamer, WebRtcMode, VideoTransformerBase
 import numpy as np
 import cv2
