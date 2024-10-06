@@ -155,9 +155,21 @@ uritemplate==4.1.1
 urllib3==2.2.3
 wrapt==1.16.0
 yarl==1.11.1
-streamlit_webrtc
-io
+python-dotenv
+streamlit
+Pillow
+google-generativeai
+reportlab
+numpy
+opencv-python
+textwrap
+streamlit-webrtc
+pydub
+SpeechRecognition
 requests
+PyPDF2
+pickle5
+base64
 
 
 
