@@ -1,7 +1,7 @@
 python-dotenv
 streamlit
 
-PIL
+pillow 
 google.generativeai
 io
 reportlab
