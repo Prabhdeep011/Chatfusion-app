@@ -165,7 +165,7 @@ Pillow  # Use 'Pillow' instead of 'PIL'
 google-generativeai
 io
 reportlab
-numpy
+
 opencv-python  # Use 'opencv-python' for OpenCV
 textwrap
 streamlit-webrtc
