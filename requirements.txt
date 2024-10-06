@@ -173,7 +173,6 @@ opencv-python==4.8.0.74  # Change this based on your Python version
 numpy==1.23.5
 streamlit-webrtc==0.35.0
 reportlab==3.6.11
-pip install --upgrade pip
 
 
 
