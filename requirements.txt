@@ -165,12 +165,12 @@ yarl==1.11.1
 dotenv
 streamlit
 os
-	PIL (Python Imaging Library)
+	PIL 
 	google.generativeai
 io
 	reportlab
 	numpy
-	cv2 (OpenCV)
+	cv2
 textwrap
 	streamlit_webrtc
 	pydub
