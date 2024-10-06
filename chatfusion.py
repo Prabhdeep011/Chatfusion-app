@@ -5,7 +5,7 @@ from PIL import Image
 
 import io
 
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, VideoTransformerBase
+
 import numpy as np
 import cv2
 from reportlab.pdfbase import pdfmetrics
