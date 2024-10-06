@@ -170,11 +170,10 @@ streamlit-webrtc
 SpeechRecognition  # Ensure this is the correct case and spelling
 cv2
 streamlit==1.38.0
-opencv-python==4.6.0.66
+opencv-python==4.8.0.74  # Change this based on your Python version
 numpy==1.23.5
 streamlit-webrtc==0.35.0
 reportlab==3.6.11
-
 
 
 
