@@ -2,7 +2,7 @@
 import streamlit as st
 import os
 from PIL import Image
-import google.generativeai as genai
+
 import io
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
