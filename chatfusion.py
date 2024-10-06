@@ -656,7 +656,7 @@ if st.session_state.show_dynamic_bg:
 
 # If the dark wallpaper checkbox is checked, show the dark wallpaper
 if st.session_state.show_dark_wallpaper:
-    add_dark_wallpaper("/Users/prabhdeepsingh/Desktop/my work/chatfusiondark.png")
+    add_dark_wallpaper("chatfusiondark.png")
    
 
 
