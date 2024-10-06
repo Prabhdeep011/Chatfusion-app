@@ -8,8 +8,7 @@ import io
 
 import numpy as np
 
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+
 
 # Initialize Streamlit app configuration in wide mode
 st.set_page_config(page_title="ChatFusion", layout="wide")
