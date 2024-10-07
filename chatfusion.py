@@ -122,8 +122,8 @@ from reportlab.lib.pagesizes import letter
 import io
 
 # Register the necessary fonts
-pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansGurmukhi.ttf'))
-pdfmetrics.registerFont(TTFont('NotoSansDevanagari', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansDevanagari.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', 'NotoSansGurmukhi.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansDevanagari', 'NotoSansDevanagari.ttf'))
 
 
 
