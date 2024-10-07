@@ -122,8 +122,8 @@ from reportlab.lib.pagesizes import letter
 import io
 
 # Register the necessary fonts
-pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', 'NotoSansGurmukhi.ttf'))
-pdfmetrics.registerFont(TTFont('NotoSansDevanagari', 'NotoSansDevanagari.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansGurmukhi.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansDevanagari', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansDevanagari.ttf'))
 
 
 
@@ -412,6 +412,10 @@ from pypdf import PdfReader
 # Folder to save uploaded PDF files
 upload_folder = 'uploaded_pdf_file'
 
+# Ensure the upload folder exists
+if not os.path.exists(upload_folder):
+    os.makedirs(upload_folder)
+
 # Initialize session state keys
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -527,7 +531,7 @@ if pdf_summarizer_option == "PDF Bot":
 
 # Display chat history with a header
 if "messages" in st.session_state and st.session_state.messages:
-    st.subheader("Recents(up to bottom)")
+    st.subheader("Recents (up to bottom)")
     for message in st.session_state.messages:
         role = "You" if message["role"] == "user" else "Bot"
         st.write(f"**{role}:** {message['content']}")
@@ -656,7 +660,7 @@ if st.session_state.show_dynamic_bg:
 
 # If the dark wallpaper checkbox is checked, show the dark wallpaper
 if st.session_state.show_dark_wallpaper:
-    add_dark_wallpaper("chatfusiondark.png")
+    add_dark_wallpaper("/Users/prabhdeepsingh/Desktop/my work/chatfusiondark.png")
    
 
 
@@ -720,6 +724,11 @@ if 'show_about' in st.session_state and st.session_state.show_about:
         </div>
     """, unsafe_allow_html=True)
     
+
+
+
+
+
 
 
 
