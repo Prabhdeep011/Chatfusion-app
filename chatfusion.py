@@ -542,7 +542,7 @@ footer = """
         bottom: 0;
         right: 0;
         width: 100%;
-        text-align: right;
+        text-align: left;
         color: #FFA500;
         padding: 10px;
         font-size: 12px;
@@ -724,6 +724,9 @@ if 'show_about' in st.session_state and st.session_state.show_about:
         </div>
     """, unsafe_allow_html=True)
     
+
+
+
 
 
 
