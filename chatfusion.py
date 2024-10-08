@@ -284,43 +284,7 @@ with col1:
             
 
             # Move webcam capture functionality to a drawer
-            with st.expander("Capture Image from Webcam", expanded=False):
-                st.write("Initializing webcam...")
-                webrtc_ctx = webrtc_streamer(
-                    
-        
-                    key="webcam",
-        
-                    mode=WebRtcMode.SENDRECV,
-        
-                    video_processor_factory=VideoTransformer,
-        
-                    media_stream_constraints={"video": True, "audio": False}
-    )
-    
-if webrtc_ctx:
-        
-    st.write("Webcam initialized.")
-    
-else:
-        
-    st.write("Failed to initialize webcam.")
-
-    
-    if st.button('Capture Webcam Image'):
-        if webrtc_ctx and webrtc_ctx.video_processor:
-            image = webrtc_ctx.video_processor.capture_image()
-            if image:
-                st.session_state['uploaded_image'] = image
-                st.image(image, caption="Captured Webcam Image.", channels="BGR", use_column_width=True)
-    elif st.session_state['tab'] == 'Chat History':
-        st.subheader("Chat History")
-        if st.session_state['history']:
-            for idx, chat in enumerate(st.session_state['history']):
-                st.write(f"*Prompt {idx + 1}:* {chat['input']}")
-                st.write(f"*Response {idx + 1}:* {chat['response']}")
-                if chat['image']:
-                    st.image(chat['image'], caption=f"Image {idx + 1}", use_column_width=True)
+            
         else:
             st.write("No chat history available.")
 
