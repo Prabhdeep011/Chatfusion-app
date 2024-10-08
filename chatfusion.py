@@ -284,7 +284,9 @@ with col1:
             
 
             with st.expander("Capture Image from Webcam", expanded=False):
-    try:
+                
+                
+                try:
         webrtc_ctx = webrtc_streamer(
             key="webcam",
             mode=WebRtcMode.SENDRECV,
