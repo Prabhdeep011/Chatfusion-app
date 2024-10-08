@@ -122,8 +122,8 @@ from reportlab.lib.pagesizes import letter
 import io
 
 # Register the necessary fonts
-pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansGurmukhi.ttf'))
-pdfmetrics.registerFont(TTFont('NotoSansDevanagari', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansDevanagari.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', 'NotoSansGurmukhi.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansDevanagari', 'NotoSansDevanagari.ttf'))
 
 
 
@@ -660,7 +660,7 @@ if st.session_state.show_dynamic_bg:
 
 # If the dark wallpaper checkbox is checked, show the dark wallpaper
 if st.session_state.show_dark_wallpaper:
-    add_dark_wallpaper("/Users/prabhdeepsingh/Desktop/my work/chatfusiondark.png")
+    add_dark_wallpaper("chatfusiondark.png")
    
 
 
