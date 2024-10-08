@@ -155,8 +155,8 @@ uritemplate==4.1.1
 urllib3==2.2.3
 wrapt==1.16.0
 yarl==1.11.1
-ffmpeg
+ffmpeg==1.4
 streamlit-webrtc
-avconv
+
 
 
