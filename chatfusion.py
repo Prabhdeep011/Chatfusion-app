@@ -283,7 +283,7 @@ with col1:
             
             
 
-          with st.expander("Capture Image from Webcam", expanded=False):
+            with st.expander("Capture Image from Webcam", expanded=False):
     try:
         webrtc_ctx = webrtc_streamer(
             key="webcam",
