@@ -283,20 +283,46 @@ with col1:
             
             
 
-            # Move webcam capture functionality to a drawer
-            with st.expander("Capture Image from Webcam", expanded=False):
-                webrtc_ctx = webrtc_streamer(
-                    key="webcam",
-                    mode=WebRtcMode.SENDRECV,
-                    video_transformer_factory=VideoTransformer,
-                     media_stream_constraints={"video": True, "audio": False} 
+       import streamlit as st
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, VideoProcessorBase
+import av
+
+class VideoTransformer(VideoProcessorBase):
+    def __init__(self):
+        self.frame = None
+
+    def recv(self, frame):
+        img = frame.to_ndarray(format="bgr24")
+        self.frame = img
+        return av.VideoFrame.from_ndarray(img, format="bgr24")
+    
+    def capture_image(self):
+        if self.frame is not None:
+            return self.frame
+        return None
+
+# Move webcam capture functionality to a drawer
+with st.expander("Capture Image from Webcam", expanded=False):
+    webrtc_ctx = webrtc_streamer(
+        key="webcam",
+        mode=WebRtcMode.SENDRECV,
+        video_processor_factory=VideoTransformer,
+        media_stream_constraints={"video": True, "audio": False}
+    )
+    
+    if st.button('Capture Webcam Image'):
+        if webrtc_ctx.video_processor:
+            image = webrtc_ctx.video_processor.capture_image()
+            if image is not None:
+                st.session_state['uploaded_image'] = image
+                st.image(
+                    image, 
+                    caption="Captured Webcam Image.", 
+                    channels="BGR", 
+                    use_column_width=True
                 )
-                if st.button('Capture Webcam Image'):
-                    if webrtc_ctx.video_transformer:
-                        image = webrtc_ctx.video_transformer.capture_image()
-                        if image:
-                            st.session_state['uploaded_image'] = image
-                            st.image(image, caption="Captured Webcam Image.", channels="BGR",use_column_width=True)
+            else:
+                st.warning("No image captured. Please try again.")
 
     elif st.session_state['tab'] == 'Chat History':
         st.subheader("Chat History")
