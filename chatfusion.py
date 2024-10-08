@@ -303,7 +303,7 @@ with st.expander("Capture Image from Webcam", expanded=False):
                 st.session_state['uploaded_image'] = image
                 st.image(
                     image, 
-                    caption="Captured Webcam Image.", 
+                    caption="Captured Webcam Image.",
                     channels="BGR",  # Ensure the correct channel order
                     use_column_width=True
                 )
