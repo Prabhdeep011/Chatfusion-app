@@ -285,14 +285,28 @@ with col1:
 
             # Move webcam capture functionality to a drawer
             with st.expander("Capture Image from Webcam", expanded=False):
+                st.write("Initializing webcam...")
                 webrtc_ctx = webrtc_streamer(
+                    
+        
                     key="webcam",
+        
                     mode=WebRtcMode.SENDRECV,
         
-                    video_processor_factory=VideoTransformer,  # Updated from video_transformer_factory
+                    video_processor_factory=VideoTransformer,
         
                     media_stream_constraints={"video": True, "audio": False}
     )
+    
+if webrtc_ctx:
+        
+    st.write("Webcam initialized.")
+    
+else:
+        
+    st.write("Failed to initialize webcam.")
+
+    
     if st.button('Capture Webcam Image'):
         if webrtc_ctx and webrtc_ctx.video_processor:
             image = webrtc_ctx.video_processor.capture_image()
