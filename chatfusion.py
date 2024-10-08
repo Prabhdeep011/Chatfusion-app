@@ -188,52 +188,7 @@ def generate_pdf():
     c.save()
     buffer.seek(0)
     return buffer
-# Webcam functionality
-import streamlit as st
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, VideoTransformerBase
-import cv2
-import numpy as np
-from PIL import Image
 
-# Webcam functionality
-class VideoTransformer(VideoTransformerBase):
-    def __init__(self):
-        self.image = None
-
-    def transform(self, frame):
-        # Get frame from the webcam and convert BGR to RGB
-        img = frame.to_ndarray(format="bgr24")
-        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
-        self.image = img_rgb  # Save the current frame in RGB format
-        return img_rgb
-
-    def capture_image(self):
-        if self.image is not None:
-            return Image.fromarray(self.image)
-        return None
-
-# Move webcam capture functionality to a drawer
-with st.expander("Capture Image from Webcam", expanded=False):
-    webrtc_ctx = webrtc_streamer(
-        key="webcam",
-        mode=WebRtcMode.SENDRECV,
-        video_processor_factory=VideoTransformer,
-        media_stream_constraints={"video": True},  # Only video constraints
-        async_processing=True  # Enable async processing
-    )
-    
-    if st.button('Capture Webcam Image'):
-        if webrtc_ctx.video_processor:
-            image = webrtc_ctx.video_processor.capture_image()
-            if image is not None:
-                st.session_state['uploaded_image'] = image
-                st.image(
-                    image, 
-                    caption="Captured Webcam Image.", 
-                    use_column_width=True
-                )
-            else:
-                st.warning("No image captured. Please try again.")
 
 # Title at the top left
 st.markdown("<h1 style='text-align: left;'>ChatFusion</h1>", unsafe_allow_html=True)
