@@ -285,26 +285,27 @@ with col1:
 
             # Move webcam capture functionality to a drawer
          with st.expander("Capture Image from Webcam", expanded=False):
-      try:
-          webrtc_ctx = webrtc_streamer(
-              key="webcam",
-              mode=WebRtcMode.SENDRECV,
-              video_processor_factory=VideoTransformer,  # Updated to video_processor_factory as per deprecation notice
-              media_stream_constraints={"video": True, "audio": False} 
+             try:
+                 webrtc_ctx = webrtc_streamer(
+                 key="webcam",
+                 mode=WebRtcMode.SENDRECV,
+                 video_processor_factory=VideoTransformer,  # Updated to video_processor_factory as per deprecation notice
+                 media_stream_constraints={"video": True, "audio": False} 
         )
         
-          if st.button('Capture Webcam Image'):
+             if st.button('Capture Webcam Image'):
+                 
             # Check if the WebRTC context and video processor are active before capturing
-              if webrtc_ctx and webrtc_ctx.state.playing and webrtc_ctx.video_processor:
-                  image = webrtc_ctx.video_processor.capture_image()
-                  if image:
-                      st.session_state['uploaded_image'] = image
-                      st.image(image, caption="Captured Webcam Image.", channels="BGR", use_column_width=True)
-              else:
-                  st.warning("WebRTC connection is not active. Please ensure the webcam is working.")
+                 if webrtc_ctx and webrtc_ctx.state.playing and webrtc_ctx.video_processor:
+                     image = webrtc_ctx.video_processor.capture_image()
+                     if image:
+                         st.session_state['uploaded_image'] = image
+                         st.image(image, caption="Captured Webcam Image.", channels="BGR", use_column_width=True)
+                 else:
+                     st.warning("WebRTC connection is not active. Please ensure the webcam is working.")
     
-      except Exception as e:
-          st.error(f"Error in WebRTC connection: {e}")
+         except Exception as e:
+             st.error(f"Error in WebRTC connection: {e}")
 
    elif st.session_state['tab'] == 'Chat History':
 
