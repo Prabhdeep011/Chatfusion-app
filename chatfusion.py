@@ -266,51 +266,6 @@ with col1:
                 st.session_state['uploaded_image'] = image
                 st.image(image, caption="Uploaded Image.", use_column_width=True)
             
-            
-
-import streamlit as st
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, VideoProcessorBase
-import av
-
-class VideoTransformer(VideoProcessorBase):
-    def __init__(self):
-        self.frame = None
-
-    def recv(self, frame):
-        img = frame.to_ndarray(format="bgr24")  # Convert the frame to a numpy array
-        self.frame = img  # Store the current frame
-        return av.VideoFrame.from_ndarray(img, format="bgr24")  # Return the frame for rendering
-
-    def capture_image(self):
-        if self.frame is not None:
-            return self.frame  # Return the captured frame
-        return None
-
-# Move webcam capture functionality to a drawer
-with st.expander("Capture Image from Webcam", expanded=False):
-    webrtc_ctx = webrtc_streamer(
-        key="webcam",
-        mode=WebRtcMode.SENDRECV,
-        video_processor_factory=VideoTransformer,
-        media_stream_constraints={"video": True},  # Enable video
-        async_processing=True  # Enable asynchronous processing
-    )
-    
-    if st.button('Capture Webcam Image'):
-        if webrtc_ctx.video_processor:
-            image = webrtc_ctx.video_processor.capture_image()  # Capture the image
-            if image is not None:
-                st.session_state['uploaded_image'] = image
-                st.image(
-                    image, 
-                    caption="Captured Webcam Image.",
-                    channels="BGR",  # Ensure the correct channel order
-                    use_column_width=True
-                )
-            else:
-                st.warning("No image captured. Please try again.")
-        else:
-            st.warning("Video processor not initialized.")
     elif st.session_state['tab'] == 'Chat History':
         st.subheader("Chat History")
         if st.session_state['history']:
