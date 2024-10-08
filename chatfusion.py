@@ -283,7 +283,7 @@ with col1:
             
             
 
-       import streamlit as st
+import streamlit as st
 from streamlit_webrtc import webrtc_streamer, WebRtcMode, VideoProcessorBase
 import av
 
@@ -307,7 +307,8 @@ with st.expander("Capture Image from Webcam", expanded=False):
         key="webcam",
         mode=WebRtcMode.SENDRECV,
         video_processor_factory=VideoTransformer,
-        media_stream_constraints={"video": True, "audio": False}
+        media_stream_constraints={"video": True},  # Only video constraints
+        async_processing=True  # Set to True for async processing
     )
     
     if st.button('Capture Webcam Image'):
