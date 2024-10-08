@@ -288,12 +288,12 @@ with col1:
                 webrtc_ctx = webrtc_streamer(
                     key="webcam",
                     mode=WebRtcMode.SENDRECV,
-                    video_transformer_factory=VideoTransformer,
+                    video_processor_factory=VideoTransformer,
                      media_stream_constraints={"video": True, "audio": False} 
                 )
                 if st.button('Capture Webcam Image'):
                     if webrtc_ctx.video_transformer:
-                        image = webrtc_ctx.video_transformer.capture_image()
+                        image = webrtc_ctx.video_processor.capture_image()
                         if image:
                             st.session_state['uploaded_image'] = image
                             st.image(image, caption="Captured Webcam Image.", channels="BGR",use_column_width=True)
