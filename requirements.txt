@@ -156,4 +156,4 @@ urllib3==2.2.3
 wrapt==1.16.0
 yarl==1.11.1
 ffmpeg
-
+streamlit-webrtc
