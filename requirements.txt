@@ -155,8 +155,12 @@ uritemplate==4.1.1
 urllib3==2.2.3
 wrapt==1.16.0
 yarl==1.11.1
-streamlit-webrtc
-ffmpeg-python
+streamlit==1.26.0
+streamlit-webrtc==0.46.0
+pydub==0.25.1
+speechrecognition==3.8.1
+numpy==1.24.0
+scipy==1.11.0
 
 
 
