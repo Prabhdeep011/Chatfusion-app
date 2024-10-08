@@ -122,8 +122,8 @@ from reportlab.lib.pagesizes import letter
 import io
 
 # Register the necessary fonts
-pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', 'NotoSansGurmukhi.ttf'))
-pdfmetrics.registerFont(TTFont('NotoSansDevanagari', 'NotoSansDevanagari.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansGurmukhi', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansGurmukhi.ttf'))
+pdfmetrics.registerFont(TTFont('NotoSansDevanagari', '/Users/prabhdeepsingh/Desktop/streamlite/NotoSansDevanagari.ttf'))
 
 
 
@@ -188,7 +188,22 @@ def generate_pdf():
     c.save()
     buffer.seek(0)
     return buffer
+# Webcam functionality
+class VideoTransformer(VideoTransformerBase):
+    def __init__(self):
+        self.image = None
 
+    def transform(self, frame):
+        # Get frame from the webcam and convert BGR to RGB
+        img = frame.to_ndarray(format="bgr24")
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
+        self.image = img_rgb  # Save the current frame in RGB format
+        return img_rgb
+
+    def capture_image(self):
+        if self.image is not None:
+            return Image.fromarray(self.image)
+        return None
 
 # Title at the top left
 st.markdown("<h1 style='text-align: left;'>ChatFusion</h1>", unsafe_allow_html=True)
@@ -266,6 +281,23 @@ with col1:
                 st.session_state['uploaded_image'] = image
                 st.image(image, caption="Uploaded Image.", use_column_width=True)
             
+            
+
+            # Move webcam capture functionality to a drawer
+            with st.expander("Capture Image from Webcam", expanded=False):
+                webrtc_ctx = webrtc_streamer(
+                    key="webcam",
+                    mode=WebRtcMode.SENDRECV,
+                    video_transformer_factory=VideoTransformer,
+                     media_stream_constraints={"video": True, "audio": False} 
+                )
+                if st.button('Capture Webcam Image'):
+                    if webrtc_ctx.video_transformer:
+                        image = webrtc_ctx.video_transformer.capture_image()
+                        if image:
+                            st.session_state['uploaded_image'] = image
+                            st.image(image, caption="Captured Webcam Image.", channels="BGR",use_column_width=True)
+
     elif st.session_state['tab'] == 'Chat History':
         st.subheader("Chat History")
         if st.session_state['history']:
@@ -628,7 +660,7 @@ if st.session_state.show_dynamic_bg:
 
 # If the dark wallpaper checkbox is checked, show the dark wallpaper
 if st.session_state.show_dark_wallpaper:
-    add_dark_wallpaper("chatfusiondark.png")
+    add_dark_wallpaper("/Users/prabhdeepsingh/Desktop/my work/chatfusiondark.png")
    
 
 
@@ -692,11 +724,6 @@ if 'show_about' in st.session_state and st.session_state.show_about:
         </div>
     """, unsafe_allow_html=True)
     
-
-
-
-
-
 
 
 
