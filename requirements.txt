@@ -1,6 +1,6 @@
  Python 3.7 or above
 Streamlit
-SpeechRecognition
+SpeechRecognition==3.10.0  # Or replace with the latest version
 PyDub
 
 
