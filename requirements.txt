@@ -134,7 +134,7 @@ SpeechRecognition==3.10.4
 SQLAlchemy==2.0.35
 streamlit==1.38.0
 streamlit-toggle-switch==1.0.2
-streamlit-webrtc==0.47.9
+streamlit-webrtc==0.39.0  # Replace with the latest version available
 striprtf==0.0.26
 sympy==1.13.2
 tenacity==8.5.0
