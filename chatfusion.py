@@ -205,6 +205,18 @@ class VideoTransformer(VideoTransformerBase):
             return Image.fromarray(self.image)
         return None
 
+
+
+import streamlit as st
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+
+class VideoTransformer(VideoTransformerBase):
+    def transform(self, frame):
+        return frame
+
+st.title("Webcam Stream Example")
+webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
+
 # Title at the top left
 st.markdown("<h1 style='text-align: left;'>ChatFusion</h1>", unsafe_allow_html=True)
 
