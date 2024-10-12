@@ -1,6 +1,6 @@
 # Chatfusion
 This is a chatbot 
-#Features
+# Features
 It integrates several features to enhance user interaction:
 
 PDF Chatbot: Interact with PDF documents seamlessly.
