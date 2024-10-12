@@ -159,7 +159,6 @@ yarl==1.11.1
 dotenv
 streamlit
 os
-PIL (Python Imaging Library)
 google.generativeai
 io
 reportlab
