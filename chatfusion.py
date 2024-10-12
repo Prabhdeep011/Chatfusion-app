@@ -187,7 +187,7 @@ def generate_pdf():
         c.saveState()
         c.translate(width / 2, height / 2)
         c.rotate(45)
-        c.drawCentredString(0, 0, "~Chatfusion")
+        c.drawCentredString(0, 0, "ChatFusion")
         c.restoreState()
 
         if y < margin:
