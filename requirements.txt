@@ -1,7 +1,20 @@
- Python 3.7 or above
-Streamlit
-SpeechRecognition==3.10.0  # Or replace with the latest version
-PyDub
+dotenv
+streamlit
+os
+	PIL (Python Imaging Library)
+	google.generativeai
+io
+	reportlab
+	numpy
+	cv2 (OpenCV)
+textwrap
+	streamlit_webrtc
+	pydub
+	speech_recognition
+	requests
+	pypdf
+	pickle
+	base64
 
 
 
