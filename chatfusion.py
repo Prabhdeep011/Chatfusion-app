@@ -166,7 +166,7 @@ def generate_pdf():
         for line in wrap(response_text, width=90):  # Adjust width as needed
             c.drawString(margin, y, line)
             y -= 12  # Line height
-            
+
         # Add extra space after the response
         y -= 12  # Leave an extra line
 
@@ -180,6 +180,15 @@ def generate_pdf():
                 y = height - margin - image_height
             c.drawImage(image_path, margin, y - image_height, width=image_width, height=image_height)
             y -= (image_height + 20)
+
+        # Add a watermark on each page
+        c.setFont("Helvetica", 30)
+        c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
+        c.saveState()
+        c.translate(width / 2, height / 2)
+        c.rotate(45)
+        c.drawCentredString(0, 0, "~Chatfusion")
+        c.restoreState()
 
         if y < margin:
             c.showPage()
