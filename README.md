@@ -1,7 +1,9 @@
 # Chatfusion
 This is a chatbot 
-# Features
-It integrates several features to enhance user interaction:
+
+# It integrates several features to enhance user interaction:
+
+Saves Chat history and provides the pdf of a particular chat conversation.
 
 PDF Chatbot: Interact with PDF documents seamlessly.
 
