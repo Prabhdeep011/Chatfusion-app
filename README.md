@@ -1,5 +1,5 @@
 # About
-This is a chatbot named ChatFusion made using the Streamlit interface
+This is a chatbot named ChatFusion made using the Streamlit interface.
 
 Here's the link: https://chatfusion-app-pjyyl2dwwbeyexxafzmxhs.streamlit.app/
 
