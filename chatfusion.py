@@ -139,6 +139,15 @@ def generate_pdf():
     y = height - margin  # Start at the top of the page
 
     for idx, chat in enumerate(st.session_state['history']):
+        # Add a watermark on each page before drawing any text
+        c.setFont("Helvetica", 30)
+        c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
+        c.saveState()
+        c.translate(width / 2, height / 2)
+        c.rotate(45)
+        c.drawCentredString(0, 0, "ChatFusion")
+        c.restoreState()
+
         # Get the user input and chatbot response
         prompt_text = f"User: {chat['input']}"
         response_text = f"Bot: {chat['response']}"
@@ -181,22 +190,32 @@ def generate_pdf():
             if y - image_height < margin:
                 c.showPage()
                 y = height - margin - image_height
+
+                # Draw the watermark on the new page
+                c.setFont("Helvetica", 30)
+                c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
+                c.saveState()
+                c.translate(width / 2, height / 2)
+                c.rotate(45)
+                c.drawCentredString(0, 0, "ChatFusion")
+                c.restoreState()
+
             c.drawImage(image_path, margin, y - image_height, width=image_width, height=image_height)
             y -= (image_height + 20)
-
-        # Add a watermark on each page
-        c.setFont("Helvetica", 30)
-        c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
-        c.saveState()
-        c.translate(width / 2, height / 2)
-        c.rotate(45)
-        c.drawCentredString(0, 0, "ChatFusion")
-        c.restoreState()
 
         # Check if we need a new page
         if y < margin:
             c.showPage()
             y = height - margin
+
+            # Draw the watermark on the new page
+            c.setFont("Helvetica", 30)
+            c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
+            c.saveState()
+            c.translate(width / 2, height / 2)
+            c.rotate(45)
+            c.drawCentredString(0, 0, "ChatFusion")
+            c.restoreState()
 
     c.save()
     buffer.seek(0)
