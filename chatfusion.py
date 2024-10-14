@@ -152,9 +152,11 @@ def generate_pdf():
             else:
                 c.setFont("Helvetica", 12)  # Default font for English
 
+        # Set text color to black
+        c.setFillColorRGB(0, 0, 0)
+
         # Draw the prompt with appropriate font
         select_font(prompt_text)
-        c.setFillColorRGB(0, 0, 0)  # Set text color to black
         for line in wrap(prompt_text, width=90):  # Adjust width as needed
             c.drawString(margin, y, line)
             y -= 12  # Line height
@@ -164,7 +166,6 @@ def generate_pdf():
 
         # Draw the response with appropriate font
         select_font(response_text)
-        c.setFillColorRGB(0, 0, 0)  # Ensure text color is black
         for line in wrap(response_text, width=90):  # Adjust width as needed
             c.drawString(margin, y, line)
             y -= 12  # Line height
@@ -192,13 +193,14 @@ def generate_pdf():
         c.drawCentredString(0, 0, "ChatFusion")
         c.restoreState()
 
+        # Check if we need a new page
         if y < margin:
             c.showPage()
             y = height - margin
 
     c.save()
     buffer.seek(0)
-    return buffer()
+    return buffer
 # Webcam functionality
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
