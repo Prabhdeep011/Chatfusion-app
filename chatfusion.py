@@ -140,13 +140,9 @@ def generate_pdf():
 
     for idx, chat in enumerate(st.session_state['history']):
         # Add a watermark on each page before drawing any text
-        c.setFont("Helvetica", 30)
+        c.setFont("Helvetica", 10)  # Smaller font for the watermark
         c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
-        c.saveState()
-        c.translate(width / 2, height / 2)
-        c.rotate(45)
-        c.drawCentredString(0, 0, "ChatFusion")
-        c.restoreState()
+        c.drawString(width - margin - 60, height - margin, "ChatFusion")  # Position at top-right corner
 
         # Get the user input and chatbot response
         prompt_text = f"User: {chat['input']}"
@@ -191,14 +187,10 @@ def generate_pdf():
                 c.showPage()
                 y = height - margin - image_height
 
-                # Draw the watermark on the new page
-                c.setFont("Helvetica", 30)
-                c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
-                c.saveState()
-                c.translate(width / 2, height / 2)
-                c.rotate(45)
-                c.drawCentredString(0, 0, "ChatFusion")
-                c.restoreState()
+                # Draw the watermark on the new page in the top right corner
+                c.setFont("Helvetica", 10)
+                c.setFillColorRGB(0.8, 0.8, 0.8)
+                c.drawString(width - margin - 60, height - margin, "ChatFusion")
 
             c.drawImage(image_path, margin, y - image_height, width=image_width, height=image_height)
             y -= (image_height + 20)
@@ -208,18 +200,14 @@ def generate_pdf():
             c.showPage()
             y = height - margin
 
-            # Draw the watermark on the new page
-            c.setFont("Helvetica", 30)
-            c.setFillColorRGB(0.8, 0.8, 0.8)  # Light grey color for watermark
-            c.saveState()
-            c.translate(width / 2, height / 2)
-            c.rotate(45)
-            c.drawCentredString(0, 0, "ChatFusion")
-            c.restoreState()
+            # Draw the watermark on the new page in the top right corner
+            c.setFont("Helvetica", 10)
+            c.setFillColorRGB(0.8, 0.8, 0.8)
+            c.drawString(width - margin - 60, height - margin, "ChatFusion")
 
     c.save()
     buffer.seek(0)
-    return buffer
+    return buffer.
 # Webcam functionality
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
