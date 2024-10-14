@@ -198,7 +198,7 @@ def generate_pdf():
 
     c.save()
     buffer.seek(0)
-    return buffer.
+    return buffer()
 # Webcam functionality
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
