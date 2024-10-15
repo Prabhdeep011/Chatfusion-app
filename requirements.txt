@@ -165,7 +165,6 @@ streamlit
 
 gtts
 sounddevice
-portaudio
 
 
 
