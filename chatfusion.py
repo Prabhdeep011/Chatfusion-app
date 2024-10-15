@@ -547,6 +547,10 @@ if pdf_summarizer_option == "Learn to Pronounce":
             os.remove(audio_file_path)
         else:
             st.write("No text provided for conversion.")
+        # Button to clear the text area
+    if st.sidebar.button("Clear"):
+        st.session_state["small_textarea"] = ""  # Clear the text area
+        st.sidebar.write("State cleared!")  # Display the clear message
 
 
 
