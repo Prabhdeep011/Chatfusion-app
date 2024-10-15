@@ -516,7 +516,6 @@ if "messages" in st.session_state and st.session_state.messages:
         st.write(f"**{role}:** {message['content']}")
 
 
-
 import streamlit as st
 from gtts import gTTS
 import os
@@ -542,11 +541,11 @@ def main():
             unsafe_allow_html=True
         )
 
-        # Text input for the word or phrase
-        word_to_pronounce = st.text_input("Enter a word or phrase:")
-        
-        # Button to trigger pronunciation
-        if word_to_pronounce and st.button("Hear Pronunciation"):
+        # Text input for the word or phrase in the sidebar
+        word_to_pronounce = st.sidebar.text_input("Enter a word or phrase:")
+
+        # Button to trigger pronunciation in the sidebar
+        if word_to_pronounce and st.sidebar.button("Hear Pronunciation"):
             pronunciation_path = text_to_voice(word_to_pronounce)
             if pronunciation_path:
                 st.audio(pronunciation_path, format='audio/mp3')
