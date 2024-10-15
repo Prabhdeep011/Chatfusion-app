@@ -549,8 +549,7 @@ def text_to_voice(text):
                 st.audio(pronunciation_path, format='audio/mp3')
                 st.success("Playing the pronunciation.")
 
-if __name__ == "__main__":
-    main()
+
 footer = """
     <style>
     .footer {
