@@ -333,7 +333,7 @@ st.sidebar.markdown("<h3 style='font-size:20px;'>▶ More Features</h3>", unsafe
 # Dropdown button for Audio to Text Converter in the sidebar
 pdf_summarizer_option = st.sidebar.selectbox(
     "Choose Action",  # Label for dropdown
-    ("No option selected", "Audio to Text Converter","PDF Bot","More options")  # Blank option as default, Audio to Text Converter as only other option
+    ("No option selected", "Audio to Text Converter","PDF Bot","Learn to Pronounce")  # Blank option as default, Audio to Text Converter as only other option
 )
 
 # If 'Audio to Text Converter' is selected, show the audio uploader and conversion section in the sidebar
@@ -544,6 +544,40 @@ if "messages" in st.session_state and st.session_state.messages:
     for message in st.session_state.messages:
         role = "You" if message["role"] == "user" else "Bot"
         st.write(f"**{role}:** {message['content']}")
+
+
+
+import streamlit as st
+from gtts import gTTS
+import os
+
+def text_to_voice(text):
+    if text:
+        tts = gTTS(text=text, lang='en')
+        file_path = os.path.join(os.getcwd(), "pronunciation.mp3")
+        tts.save(file_path)
+        return file_path
+    return None
+
+
+if pdf_summarizer_option == "Learn to pronounce":
+        # Heading for the Learn to Pronounce feature (within sidebar)
+        st.sidebar.markdown("---") 
+        st.sidebar.markdown(
+            "<h3 style='text-align: left;'>Learn to Pronounce</h3>",
+            unsafe_allow_html=True
+        )
+
+        # Text input for the word or phrase
+        word_to_pronounce = st.text_input("Enter a word or phrase:")
+        if word_to_pronounce and st.button("Hear Pronunciation"):
+            pronunciation_path = text_to_voice(word_to_pronounce)
+            if pronunciation_path:
+                st.audio(pronunciation_path, format='audio/mp3')
+                st.success("Playing the pronunciation.")
+
+if __name__ == "__main__":
+    main()
 footer = """
     <style>
     .footer {
