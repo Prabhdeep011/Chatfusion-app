@@ -516,30 +516,12 @@ if "messages" in st.session_state and st.session_state.messages:
         st.write(f"**{role}:** {message['content']}")
 
 
-import speech_recognition as sr
+import streamlit as st
 from gtts import gTTS
 import os
 import sounddevice as sd
 import numpy as np
 import tempfile
-
-# Function to convert voice to text
-def voice_to_text():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.write("Listening... Please speak something.")
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
-
-        try:
-            text = recognizer.recognize_google(audio)
-            st.write(f"Recognized Text: {text}")
-            return text
-        except sr.UnknownValueError:
-            st.write("Sorry, I did not understand your audio.")
-        except sr.RequestError:
-            st.write("Could not request result from Google Speech Recognition service.")
-        return None
 
 # Function to play audio from a file
 def play_audio(file_path):
@@ -562,23 +544,16 @@ def text_to_voice(text):
 
 # Main function to handle the Streamlit app
 def main():
-    st.sidebar.title("Voice & Text Converter")
-    option = st.sidebar.radio("Choose an option:", ("Convert Voice to Text", "Convert Text to Voice"))
+    st.title("Text to Audio Converter")
+    
+    text = st.text_input("Enter text to convert to voice:")
+    
+    if st.button("Convert to Voice"):
+        text_to_voice(text)
 
-    if option == "Convert Voice to Text":
-        if st.sidebar.button("Start Listening"):
-            text = voice_to_text()
-            if text:
-                st.session_state.recognized_text = text
-
-    elif option == "Convert Text to Voice":
-        text = st.sidebar.text_input("Enter text to convert to voice:")
-        if st.sidebar.button("Convert to Voice"):
-            text_to_voice(text)
-
-    # Display recognized text if available
-    if 'recognized_text' in st.session_state:
-        st.write(f"Recognized Text: {st.session_state.recognized_text}")
+# Run the app
+if __name__ == "__main__":
+    main()
 
 
 
