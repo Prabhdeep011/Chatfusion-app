@@ -516,7 +516,7 @@ if "messages" in st.session_state and st.session_state.messages:
         st.write(f"**{role}:** {message['content']}")
 
 
-
+import streamlit as st
 from gtts import gTTS
 import os
 import pygame
@@ -554,6 +554,10 @@ def main():
     
     if st.button("Convert to Voice"):
         text_to_voice(text)
+
+# Run the app
+if __name__ == "__main__":
+    main()
 
 
 
