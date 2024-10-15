@@ -535,7 +535,7 @@ if pdf_summarizer_option == "Learn to Pronounce":
     st.sidebar.markdown("<h3 style='text-align: left;'>Learn to Pronounce</h3>", unsafe_allow_html=True)
 
     # Input text from the user
-    text = st.sidebar.text_area("Enter the text to convert to voice:",height=100)
+    text = st.sidebar.text_area("Enter the text to convert to voice:",height=50)
 
     if st.sidebar.button("Convert Text to Audio"):
         # Updated button label
