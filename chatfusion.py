@@ -537,18 +537,21 @@ if pdf_summarizer_option == "Learn to Pronounce":
     # Input text from the user
     text = st.sidebar.text_area("Enter the text to convert to voice:")
 
-    # Button to convert text to audio
-    if text:
-        if st.sidebar.button("Convert Text to Audio"):  # Updated button label
-            st.header("Generated audio")
-            audio_file_path = text_to_voice(text)
-            if audio_file_path:
-                audio_file = open(audio_file_path, "rb")
-                st.audio(audio_file.read(), format="audio/mp3")
-                audio_file.close()
-                os.remove(audio_file_path)
-            else:
-                st.write("No text provided for conversion.")
+   if st.sidebar.button("Convert Text to Audio"):
+       
+       # Updated button label
+       st.header("Generated audio")
+       audio_file_path = text_to_voice(text)
+       if audio_file_path:
+           audio_file = open(audio_file_path, "rb")
+           st.audio(audio_file.read(), format="audio/mp3")
+           audio_file.close()
+           os.remove(audio_file_path)
+       else:
+           st.write("No text provided for conversion.")
+
+
+
 footer = """
     <style>
     .footer {
