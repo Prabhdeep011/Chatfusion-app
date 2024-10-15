@@ -158,6 +158,10 @@ wrapt==1.16.0
 yarl==1.11.1
 pydub
 SpeechRecognition
+gTTS==2.3.2
+pygame==2.5.0
+Pillow==9.5.0  # Use a stable version that works with most environments
+
 
 
 
