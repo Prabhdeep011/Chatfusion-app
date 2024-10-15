@@ -530,6 +530,9 @@ def text_to_voice(text):
         return file_path
     return None
 
+# Main function to handle the Streamlit app
+def main():
+    pdf_summarizer_option = "Learn to pronounce"
 
     if pdf_summarizer_option == "Learn to pronounce":
         # Heading for the Learn to Pronounce feature (within sidebar)
@@ -548,7 +551,8 @@ def text_to_voice(text):
             if pronunciation_path:
                 st.audio(pronunciation_path, format='audio/mp3')
                 st.success("Playing the pronunciation.")
-
+            else:
+                st.error("There was an error generating the pronunciation.")
 
 footer = """
     <style>
