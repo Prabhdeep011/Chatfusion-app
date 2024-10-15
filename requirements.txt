@@ -159,13 +159,6 @@ yarl==1.11.1
 pydub
 SpeechRecognition
 
-pygame==2.5.0
-
-streamlit
-
-gtts
-sounddevice
-pyaudio
 
 
 
