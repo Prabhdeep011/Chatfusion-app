@@ -515,11 +515,13 @@ if "messages" in st.session_state and st.session_state.messages:
         role = "You" if message["role"] == "user" else "Bot"
         st.write(f"**{role}:** {message['content']}")
 
-import streamlit as st
+
 import speech_recognition as sr
 from gtts import gTTS
 import os
-import pygame
+import sounddevice as sd
+import numpy as np
+import tempfile
 
 # Function to convert voice to text
 def voice_to_text():
@@ -539,23 +541,22 @@ def voice_to_text():
             st.write("Could not request result from Google Speech Recognition service.")
         return None
 
+# Function to play audio from a file
+def play_audio(file_path):
+    fs = 22050  # Sample rate
+    data = np.memmap(file_path, dtype='h', mode='r')  # Read the file
+    sd.play(data, fs)  # Play the audio
+    sd.wait()  # Wait until the sound has finished playing
+
 # Function to convert text to voice
 def text_to_voice(text):
     if text:
         st.write(f"Converting Text to Voice: {text}")
         tts = gTTS(text=text, lang='en')
-        file_path = os.path.join(os.getcwd(), "output.mp3")
-        tts.save(file_path)
-        st.write(f"File saved at: {file_path}")
-
-        pygame.mixer.init()
-        pygame.mixer.music.load(file_path)
-        pygame.mixer.music.play()
-
-        while pygame.mixer.music.get_busy():
-            continue
-
-        os.remove(file_path)
+        with tempfile.NamedTemporaryFile(delete=True) as temp_file:
+            tts.save(temp_file.name)
+            st.write(f"File saved at: {temp_file.name}")
+            play_audio(temp_file.name)
     else:
         st.write("No text to convert to speech.")
 
@@ -579,9 +580,7 @@ def main():
     if 'recognized_text' in st.session_state:
         st.write(f"Recognized Text: {st.session_state.recognized_text}")
 
-# Run the app
-if __name__ == "__main__":
-    main()
+
 
 footer = """
     <style>
