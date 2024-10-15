@@ -543,7 +543,7 @@ if pdf_summarizer_option == "Learn to Pronounce":
     # Button to convert text to audio
     if text:
         if st.sidebar.button("Convert Text to Audio"):  # Updated button label
-            st.write("Generating audio...")
+            st.header("Generated audio")
             audio_file_path = text_to_voice(text)
             if audio_file_path:
                 audio_file = open(audio_file_path, "rb")
