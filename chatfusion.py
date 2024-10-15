@@ -517,8 +517,7 @@ if "messages" in st.session_state and st.session_state.messages:
         role = "You" if message["role"] == "user" else "Bot"
         st.write(f"**{role}:** {message['content']}")
 
-
-
+# the text to speech
 from gtts import gTTS
 import os
 import streamlit as st
@@ -531,6 +530,9 @@ def text_to_voice(text):
         return file_path
     return None
 
+# Assuming pdf_summarizer_option is defined somewhere in your code
+pdf_summarizer_option = "Learn to Pronounce"  # Placeholder
+
 if pdf_summarizer_option == "Learn to Pronounce":
     st.sidebar.markdown("---")
     st.sidebar.markdown("<h3 style='text-align: left;'>Learn to Pronounce</h3>", unsafe_allow_html=True)
@@ -538,9 +540,9 @@ if pdf_summarizer_option == "Learn to Pronounce":
     # Input text from the user
     text = st.sidebar.text_area("Enter the text to convert to voice:")
 
-    # Button to convert text to voice
+    # Button to convert text to audio
     if text:
-        if st.sidebar.button("Convert Text to Voice"):
+        if st.sidebar.button("Convert Text to Audio"):  # Updated button label
             st.write("Generating audio...")
             audio_file_path = text_to_voice(text)
             if audio_file_path:
@@ -550,8 +552,6 @@ if pdf_summarizer_option == "Learn to Pronounce":
                 os.remove(audio_file_path)
             else:
                 st.write("No text provided for conversion.")
-
-
 footer = """
     <style>
     .footer {
