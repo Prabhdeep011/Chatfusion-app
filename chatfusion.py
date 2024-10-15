@@ -197,22 +197,7 @@ def generate_pdf():
     c.save()
     buffer.seek(0)
     return buffer
-# Webcam functionality
-class VideoTransformer(VideoTransformerBase):
-    def __init__(self):
-        self.image = None
 
-    def transform(self, frame):
-        # Get frame from the webcam and convert BGR to RGB
-        img = frame.to_ndarray(format="bgr24")
-        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
-        self.image = img_rgb  # Save the current frame in RGB format
-        return img_rgb
-
-    def capture_image(self):
-        if self.image is not None:
-            return Image.fromarray(self.image)
-        return None
 
 # Title at the top left
 st.markdown("<h1 style='text-align: left;'>ChatFusion</h1>", unsafe_allow_html=True)
@@ -290,22 +275,7 @@ with col1:
                 st.session_state['uploaded_image'] = image
                 st.image(image, caption="Uploaded Image.", use_column_width=True)
             
-            
-
-            # Move webcam capture functionality to a drawer
-            with st.expander("Capture Image from Webcam", expanded=False):
-                webrtc_ctx = webrtc_streamer(
-                    key="webcam",
-                    mode=WebRtcMode.SENDRECV,
-                    video_transformer_factory=VideoTransformer,
-                     media_stream_constraints={"video": True, "audio": False} 
-                )
-                if st.button('Capture Webcam Image'):
-                    if webrtc_ctx.video_transformer:
-                        image = webrtc_ctx.video_transformer.capture_image()
-                        if image:
-                            st.session_state['uploaded_image'] = image
-                            st.image(image, caption="Captured Webcam Image.", channels="BGR",use_column_width=True)
+        
 
     elif st.session_state['tab'] == 'Chat History':
         st.subheader("Chat History")
@@ -551,6 +521,7 @@ import streamlit as st
 from gtts import gTTS
 import os
 
+# Function to convert text to speech
 def text_to_voice(text):
     if text:
         tts = gTTS(text=text, lang='en')
@@ -560,7 +531,7 @@ def text_to_voice(text):
     return None
 
 
-if pdf_summarizer_option == "Learn to pronounce":
+    if pdf_summarizer_option == "Learn to pronounce":
         # Heading for the Learn to Pronounce feature (within sidebar)
         st.sidebar.markdown("---") 
         st.sidebar.markdown(
@@ -570,6 +541,8 @@ if pdf_summarizer_option == "Learn to pronounce":
 
         # Text input for the word or phrase
         word_to_pronounce = st.text_input("Enter a word or phrase:")
+        
+        # Button to trigger pronunciation
         if word_to_pronounce and st.button("Hear Pronunciation"):
             pronunciation_path = text_to_voice(word_to_pronounce)
             if pronunciation_path:
