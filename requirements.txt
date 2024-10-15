@@ -160,7 +160,7 @@ pydub
 SpeechRecognition
 gTTS==2.3.2
 pygame==2.5.0
-Pillow==9.5.0  # Use a stable version that works with most environments
+
 
 
 
