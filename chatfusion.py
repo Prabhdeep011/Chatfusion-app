@@ -516,50 +516,6 @@ if "messages" in st.session_state and st.session_state.messages:
         st.write(f"**{role}:** {message['content']}")
 
 
-import streamlit as st
-from gtts import gTTS
-import os
-import pygame
-
-# Function to convert text to voice
-def text_to_voice(text):
-    if text:
-        st.write(f"Converting Text to Voice: {text}")
-        tts = gTTS(text=text, lang='en')
-        file_path = os.path.join(os.getcwd(), "output.mp3")
-        tts.save(file_path)
-        st.write(f"File saved at: {file_path}")
-
-        # Initialize pygame mixer
-        pygame.mixer.init()
-    
-        # Load and play the audio file
-        pygame.mixer.music.load(file_path)
-        pygame.mixer.music.play()
-
-        # Wait for the audio to finish playing
-        while pygame.mixer.music.get_busy():
-            continue
-
-        # Remove the audio file after playback
-        os.remove(file_path)
-    else:
-        st.write("No text to convert to speech.")
-
-# Main function to handle the Streamlit app
-def main():
-    st.title("Text to Audio Converter")
-    
-    text = st.text_input("Enter text to convert to voice:")
-    
-    if st.button("Convert to Voice"):
-        text_to_voice(text)
-
-# Run the app
-if __name__ == "__main__":
-    main()
-
-
 
 
 footer = """
