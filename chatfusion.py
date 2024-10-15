@@ -550,7 +550,7 @@ if pdf_summarizer_option == "Learn to Pronounce":
         # Button to clear the text area
     if st.sidebar.button("Clear"):
         st.session_state["small_textarea"] = ""  # Clear the text area
-        st.sidebar.write("State cleared!")  # Display the clear message
+        st.write("State cleared!")  # Display the clear message
 
 
 
