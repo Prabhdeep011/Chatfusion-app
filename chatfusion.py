@@ -528,9 +528,7 @@ def text_to_voice(text):
         tts.save(file_path)
         return file_path
     return None
-
-# Main function to handle the Streamlit app
-def main():
+    
     pdf_summarizer_option = "Learn to pronounce"
 
     if pdf_summarizer_option == "Learn to pronounce":
