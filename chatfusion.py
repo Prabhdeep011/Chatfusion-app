@@ -528,7 +528,9 @@ def text_to_voice(text):
         tts.save(file_path)
         return file_path
     return None
-    
+
+# Main function to handle the Streamlit app
+def main():
     pdf_summarizer_option = "Learn to pronounce"
 
     if pdf_summarizer_option == "Learn to pronounce":
@@ -543,13 +545,16 @@ def text_to_voice(text):
         word_to_pronounce = st.sidebar.text_input("Enter a word or phrase:")
 
         # Button to trigger pronunciation in the sidebar
-        if word_to_pronounce and st.sidebar.button("Hear Pronunciation"):
-            pronunciation_path = text_to_voice(word_to_pronounce)
-            if pronunciation_path:
-                st.audio(pronunciation_path, format='audio/mp3')
-                st.success("Playing the pronunciation.")
+        if st.sidebar.button("Hear Pronunciation"):
+            if word_to_pronounce:
+                pronunciation_path = text_to_voice(word_to_pronounce)
+                if pronunciation_path:
+                    st.audio(pronunciation_path, format='audio/mp3')
+                    st.success("Playing the pronunciation.")
+                else:
+                    st.error("There was an error generating the pronunciation.")
             else:
-                st.error("There was an error generating the pronunciation.")
+                st.warning("Please enter a word or phrase before clicking the button.")
 
 footer = """
     <style>
