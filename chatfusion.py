@@ -531,20 +531,14 @@ def text_to_voice(text):
         return file_path
     return None
 
-
-
-   
-
-    
-
 if pdf_summarizer_option == "Learn to Pronounce":
-    st.sidebar.markdown("---") 
+    st.sidebar.markdown("---")
     st.sidebar.markdown("<h3 style='text-align: left;'>Learn to Pronounce</h3>", unsafe_allow_html=True)
-        
-        # Input text from the user
+
+    # Input text from the user
     text = st.sidebar.text_area("Enter the text to convert to voice:")
 
-        # Button to convert text to voice
+    # Button to convert text to voice
     if text:
         if st.sidebar.button("Convert Text to Voice"):
             st.write("Generating audio...")
@@ -556,11 +550,6 @@ if pdf_summarizer_option == "Learn to Pronounce":
                 os.remove(audio_file_path)
             else:
                 st.write("No text provided for conversion.")
-
-if __name__ == "__main__":
-    main()
-
-
 
 
 footer = """
@@ -754,50 +743,6 @@ if 'show_about' in st.session_state and st.session_state.show_about:
 
 
 
-import speech_recognition as sr
-from gtts import gTTS
-import os
-import streamlit as st
-
-def voice_to_text(audio_file):
-    recognizer = sr.Recognizer()
-    with sr.AudioFile(audio_file) as source:
-        audio = recognizer.record(source)
-        try:
-            text = recognizer.recognize_google(audio)
-            return text
-        except sr.UnknownValueError:
-            return "Sorry, I did not understand your audio."
-        except sr.RequestError:
-            return "Could not request result from Google Speech Recognition service."
-
-def text_to_voice(text):
-    if text:
-        tts = gTTS(text=text, lang='en')
-        file_path = "output.mp3"
-        tts.save(file_path)
-        return file_path
-    return None
-
-   
-
-
-        text = st.text_area("Enter the text to convert to voice:")
-        if text:
-            if st.button("Convert Text to Voice"):
-                st.write("Generating audio...")
-                audio_file_path = text_to_voice(text)
-                if audio_file_path:
-                    audio_file = open(audio_file_path, "rb")
-                    st.audio(audio_file.read(), format="audio/mp3")
-                    audio_file.close()
-                    os.remove(audio_file_path)
-                else:
-                    st.write("No text provided for conversion.")
-
-if __name__ == "__main__":
-    main()
-    
 
 
 
