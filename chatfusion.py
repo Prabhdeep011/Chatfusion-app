@@ -530,9 +530,6 @@ def text_to_voice(text):
         return file_path
     return None
 
-# Assuming pdf_summarizer_option is defined somewhere in your code
-pdf_summarizer_option = "Learn to Pronounce"  # Placeholder
-
 if pdf_summarizer_option == "Learn to Pronounce":
     st.sidebar.markdown("---")
     st.sidebar.markdown("<h3 style='text-align: left;'>Learn to Pronounce</h3>", unsafe_allow_html=True)
@@ -680,11 +677,8 @@ if st.session_state.show_dark_wallpaper:
     add_dark_wallpaper("chatfusiondark.png")
    
 
-
-
-
 # Custom CSS to style the button and transparent background
-import streamlit as st
+
 
 st.markdown(
     """
