@@ -132,6 +132,10 @@ def generate_pdf():
     text_width = width - 2 * margin
     y = height - margin
 
+    # Indentation settings for user messages
+    user_indent = margin + 60  # User messages will be slightly indented to the right
+    bot_indent = margin  # Bot messages will start at the left margin
+
     for idx, chat in enumerate(st.session_state['history']):
         # Get the user input and chatbot response
         prompt_text = f"User: {chat['input']}"
@@ -154,21 +158,21 @@ def generate_pdf():
         # Reset fill color to black for text content
         c.setFillColorRGB(0, 0, 0)
 
-        # Draw the prompt aligned to the right with appropriate font
+        # Draw the user prompt with appropriate font and indented alignment
         select_font(prompt_text)
         wrapped_prompt = wrap(prompt_text, width=80)  # Adjusted for better content fitting
         for line in wrapped_prompt:
             if y < margin + 14:  # Check if there's enough space for the line
                 c.showPage()
                 y = height - margin
-            # Right-align the user text
-            c.drawRightString(width - margin, y, line)
+            # Right-indent the user text
+            c.drawString(user_indent, y, line)
             y -= 14
 
         # Add extra space after the prompt
         y -= 10
 
-        # Draw the response aligned to the left with appropriate font
+        # Draw the bot response with appropriate font and left-aligned
         select_font(response_text)
         wrapped_response = wrap(response_text, width=80)
         for line in wrapped_response:
@@ -176,7 +180,7 @@ def generate_pdf():
                 c.showPage()
                 y = height - margin
             # Left-align the bot response
-            c.drawString(margin, y, line)
+            c.drawString(bot_indent, y, line)
             y -= 14
 
         # Add extra space after the response
