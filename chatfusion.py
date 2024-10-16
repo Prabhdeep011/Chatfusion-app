@@ -154,26 +154,28 @@ def generate_pdf():
         # Reset fill color to black for text content
         c.setFillColorRGB(0, 0, 0)
 
-        # Draw the prompt with appropriate font
+        # Draw the prompt aligned to the right with appropriate font
         select_font(prompt_text)
-        wrapped_prompt = wrap(prompt_text, width=95)  # Adjusted for better content fitting
+        wrapped_prompt = wrap(prompt_text, width=80)  # Adjusted for better content fitting
         for line in wrapped_prompt:
             if y < margin + 14:  # Check if there's enough space for the line
                 c.showPage()
                 y = height - margin
-            c.drawString(margin, y, line)
+            # Right-align the user text
+            c.drawRightString(width - margin, y, line)
             y -= 14
 
         # Add extra space after the prompt
         y -= 10
 
-        # Draw the response with appropriate font
+        # Draw the response aligned to the left with appropriate font
         select_font(response_text)
-        wrapped_response = wrap(response_text, width=95)
+        wrapped_response = wrap(response_text, width=80)
         for line in wrapped_response:
             if y < margin + 14:  # Check if there's enough space for the line
                 c.showPage()
                 y = height - margin
+            # Left-align the bot response
             c.drawString(margin, y, line)
             y -= 14
 
