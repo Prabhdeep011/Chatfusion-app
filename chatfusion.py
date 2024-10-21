@@ -141,8 +141,7 @@ def generate_pdf():
     c.setFont("Helvetica-Bold", title_font_size)
     title_width = c.stringWidth(title, "Helvetica-Bold", title_font_size)
     c.drawString((width - title_width) / 2, height - margin - 50, title)  # Centered title
-    c.setFont("Helvetica", 12)
-    c.drawString(margin + 10, height - margin - 80, "This document contains the chat history.")
+    c.setFont("Helvetica", 15)
     c.showPage()  # Move to the next page after the title
 
     # Reset y position for content
