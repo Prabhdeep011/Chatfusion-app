@@ -139,6 +139,16 @@ def generate_pdf():
     user_indent = margin + 40
     bot_indent = margin
 
+    # Title page
+    c.setFont("Helvetica-Bold", 24)
+    c.drawString(margin + 10, height - margin - 50, "Conversation with ChatFusion")
+    c.setFont("Helvetica", 12)
+    c.drawString(margin + 10, height - margin - 80, "This document contains the chat history.")
+    c.showPage()  # Move to the next page after the title
+
+    # Reset y position for content
+    y = height - margin
+
     for idx, chat in enumerate(st.session_state['history']):
         prompt_text = f"User: {chat['input']}"
         response_text = f"Bot: {chat['response']}"
