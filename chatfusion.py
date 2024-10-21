@@ -136,8 +136,11 @@ def generate_pdf():
     border_color = (0.5, 0.5, 0.5)
 
     # Title page
-    c.setFont("Helvetica-Bold", 24)
-    c.drawString(margin + 10, height - margin - 50, "Conversation with ChatFusion")
+    title = "Conversation with ChatFusion"
+    title_font_size = 24
+    c.setFont("Helvetica-Bold", title_font_size)
+    title_width = c.stringWidth(title, "Helvetica-Bold", title_font_size)
+    c.drawString((width - title_width) / 2, height - margin - 50, title)  # Centered title
     c.setFont("Helvetica", 12)
     c.drawString(margin + 10, height - margin - 80, "This document contains the chat history.")
     c.showPage()  # Move to the next page after the title
